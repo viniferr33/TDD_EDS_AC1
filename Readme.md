@@ -8,6 +8,15 @@ Para instalar as dependências deste projeto, certifique-se de que possui o Node
 npm install
 ```
 
+Para que o Jest funcione corretamente, é necessario que a versão do node seja > 14.0.0
+Para verificar a versão:
+```sh
+node --version
+```
+
+Para atualizar o Node:
+https://www.freecodecamp.org/news/how-to-update-node-and-npm-to-the-latest-version/
+
 ## Testes
 
 Cada etapa dos testes esta em uma Branch Especifica, para executa-las:
