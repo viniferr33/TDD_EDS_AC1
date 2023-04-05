@@ -50,7 +50,7 @@ OU a senha inserida for considerada invalida
 Então o aluno deve ser receber uma mensagem de erro 
 E a mensagem deve especificar o motivo do erro (campo errado)
 
-### Cenário 3: O cadastro não foi feito - Usuario ja existe
+### Cenário 3: O cadastro não foi feito - Email de Usuario ja existe
 Dado que o Aluno não está cadastrado no sistema
 E o aluno esta na tela de cadastro
 Quando a entrada de Email,  senha, nome e telefone.

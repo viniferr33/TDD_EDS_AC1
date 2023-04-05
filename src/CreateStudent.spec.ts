@@ -48,7 +48,7 @@ describe("Cadastro de Aluno", () => {
     expect(studentRepository.studentList).not.toContain(input);
   });
 
-  it("Teste 3: O cadastro não foi feito - Usuario ja existe", async () => {
+  it("Teste 3: O cadastro não foi feito - Email de Usuario ja existe", async () => {
     const studentRepository = new StudentRepository();
     const createStudent = new CreateStudent(studentRepository);
 
@@ -56,7 +56,7 @@ describe("Cadastro de Aluno", () => {
       name: "Um usuario que ja existe",
       email: "um_usuario_existente@teste.com",
       phone: "4002-8922",
-      password: "umasenhaforte@123AAA",
+      password: "Outra senha",
     };
 
     await createStudent.execute(input);
