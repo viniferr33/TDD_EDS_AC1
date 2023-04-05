@@ -8,11 +8,30 @@ interface Student {
 class CreateStudent {
   constructor(private readonly studentRepository: StudentRepository) {}
 
-  async execute(props: Student): Promise<void> {}
+  async execute(props: Student): Promise<void> {
+    const emailRegExp: RegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+    const emailResult: boolean = emailRegExp.test(props.email);
+
+    if (!emailResult) return;
+
+    const passwordRegExp: RegExp = /^(?=.*[A-Z])(?=.*[!@#$&*])(?=.{8,})/;
+    const passwordResult: boolean = passwordRegExp.test(props.password);
+
+    if (!passwordResult) return;
+
+    const allEmails = this.studentRepository.studentList.map((e) => e.email);
+    if (allEmails.includes(props.email)) return;
+
+    this.studentRepository.studentList.push(props);
+  }
 }
 
 class StudentRepository {
-  studentList?: Student[];
+  studentList: Student[];
+
+  constructor() {
+    this.studentList = [];
+  }
 }
 
 describe("Cadastro de Aluno", () => {
