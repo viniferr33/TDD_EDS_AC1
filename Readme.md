@@ -20,21 +20,18 @@ npm test
 ```
 
 ### Green
-
 ```sh
 git checkout green
 npm test
 ```
 
 ### Refactor
-
 ```sh
 git checkout refactor
 npm test
 ```
 
 ## User Story
-
 EU como Aluno QUERO poder cadastrar minhas informações (nome, telefone, email e senha) PARA usar as funcionalidades do aplicativo
 
 ## BDD
@@ -51,7 +48,6 @@ Então o aluno deve ser receber uma mensagem de sucesso
 E o aluno deve ser redirecionado para a tela de login
 
 ### Cenário 2: O cadastro não foi feito - Os campos não fora preenchidos corretamente
-
 Dado que o Aluno não está cadastrado no sistema
 E o aluno esta na tela de cadastro
 Quando a entrada de Email e/ou senha e/ou nome e/ou telefone.
