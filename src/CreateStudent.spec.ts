@@ -43,9 +43,9 @@ describe("Cadastro de Aluno", () => {
       password: "umasenhafraca",
     };
 
-    expect(async () => {
-      await createStudent.execute(input);
-    }).toThrow(Error);
+    await createStudent.execute(input);
+
+    expect(studentRepository.studentList).not.toContain(input);
   });
 
   it("Teste 3: O cadastro não foi feito - Usuario ja existe", async () => {
@@ -59,8 +59,8 @@ describe("Cadastro de Aluno", () => {
       password: "umasenhaforte@123AAA",
     };
 
-    expect(async () => {
-      await createStudent.execute(input);
-    }).toThrow(Error);
+    await createStudent.execute(input);
+
+    expect(studentRepository.studentList).not.toContain(input);
   });
 });
