@@ -13,16 +13,19 @@ Cada etapa dos testes esta em uma Branch Especifica, para executa-las:
 
 ### Red
 ```sh
+git checkout red
 npm test
 ```
 
 ### Green
 ```sh
+git checkout green
 npm test
 ```
 
 ### Refactor
 ```sh
+git checkout refactor
 npm test
 ```
 
