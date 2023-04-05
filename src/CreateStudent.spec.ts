@@ -8,21 +8,26 @@ interface Student {
 class CreateStudent {
   constructor(private readonly studentRepository: StudentRepository) {}
 
-  async execute(props: Student): Promise<void> {
+  private testEmail(email: string): boolean {
     const emailRegExp: RegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-    const emailResult: boolean = emailRegExp.test(props.email);
+    return emailRegExp.test(email);
+  }
 
-    if (!emailResult) return;
-
+  private testPassword(password: string): boolean {
     const passwordRegExp: RegExp = /^(?=.*[A-Z])(?=.*[!@#$&*])(?=.{8,})/;
-    const passwordResult: boolean = passwordRegExp.test(props.password);
+    return passwordRegExp.test(password);
+  }
 
-    if (!passwordResult) return;
+  async execute(props: Student): Promise<void> {
+    const { email, password } = props;
 
-    const allEmails = this.studentRepository.studentList.map((e) => e.email);
-    if (allEmails.includes(props.email)) return;
+    if (!this.testEmail(email)) return;
 
-    this.studentRepository.studentList.push(props);
+    if (!this.testPassword(password)) return;
+
+    const studentExists = await this.studentRepository.getStudentByEmail(email);
+
+    await this.studentRepository.addStudent(props);
   }
 }
 
@@ -31,6 +36,18 @@ class StudentRepository {
 
   constructor() {
     this.studentList = [];
+  }
+
+  async getStudentByEmail(email: string): Promise<Student | undefined> {
+    const myStudent = this.studentList.find(
+      (student) => student.email === email
+    );
+
+    return myStudent;
+  }
+
+  async addStudent(student: Student): Promise<void> {
+    this.studentList.push(student);
   }
 }
 
