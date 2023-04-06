@@ -18,6 +18,10 @@ Para atualizar o Node:
 https://www.freecodecamp.org/news/how-to-update-node-and-npm-to-the-latest-version/
 
 ## Testes
+Para rodas os testes
+```sh
+npm test
+```
 
 Cada etapa dos testes esta em uma Branch Especifica, para executa-las:
 
