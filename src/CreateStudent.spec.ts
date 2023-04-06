@@ -26,6 +26,7 @@ class CreateStudent {
     if (!this.testPassword(password)) return;
 
     const studentExists = await this.studentRepository.getStudentByEmail(email);
+    if (studentExists) return;
 
     await this.studentRepository.addStudent(props);
   }
