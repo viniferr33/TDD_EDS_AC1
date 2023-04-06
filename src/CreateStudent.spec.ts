@@ -30,7 +30,14 @@ class StudentRepository {
   studentList: Student[];
 
   constructor() {
-    this.studentList = [];
+    this.studentList = [
+      {
+        name: "Um usuario que ja existe",
+        email: "um_usuario_existente@teste.com",
+        phone: "4002-8922",
+        password: "Outra senha",
+      },
+    ];
   }
 }
 
